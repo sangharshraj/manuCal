@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Calendar</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="calendar-container">
+      <div class="calendar-header">
+        <button class="nav-button" onclick="calendar.previousMonth()">‹</button>
+        <div class="month-year" onclick="calendar.goToToday()" id="monthYear"></div>
+        <button class="nav-button" onclick="calendar.nextMonth()">›</button>
+      </div>
+
+      <div class="controls">
+        <button class="control-btn" onclick="calendar.goToToday()">Today</button>
+        <button class="control-btn" onclick="calendar.toggleEventForm()" id="addEventBtn">Add Event</button>
+        <button class="control-btn" onclick="calendar.clearEvents()">Clear All</button>
+      </div>
+
+      <div class="calendar-grid" id="calendarGrid">
+        <!-- Generated dynamically -->
+      </div>
+
+      <div class="legend">
+        <div class="legend-item" onclick="calendar.filterEvents('court-hearing')">
+          <div class="legend-dot dot-court-hearing"></div>
+          <span>Court Hearing</span>
+        </div>
+        <div class="legend-item" onclick="calendar.filterEvents('event')">
+          <div class="legend-dot dot-event"></div>
+          <span>Event</span>
+        </div>
+        <div class="legend-item" onclick="calendar.filterEvents('order')">
+          <div class="legend-dot dot-order"></div>
+          <span>Order</span>
+        </div>
+        <div class="legend-item" onclick="calendar.filterEvents('task')">
+          <div class="legend-dot dot-task"></div>
+          <span>Task</span>
+        </div>
+      </div>
+
+      <div class="event-form" id="eventForm">
+        <div class="form-group">
+          <label>Event Title</label>
+          <input type="text" id="eventTitle" placeholder="Enter event title" />
+        </div>
+        <div class="form-group">
+          <label>Event Type</label>
+          <select id="eventType">
+            <option value="court-hearing">Court Hearing</option>
+            <option value="event">Event</option>
+            <option value="order">Order</option>
+            <option value="task">Task</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="eventDate" />
+        </div>
+        <div class="form-buttons">
+          <button class="btn btn-secondary" onclick="calendar.toggleEventForm()">Cancel</button>
+          <button class="btn btn-primary" onclick="calendar.addEvent()">Add Event</button>
+        </div>
+      </div>
+
+      <div class="event-list" id="eventList">
+        <!-- Events for selected date will appear here -->
+      </div>
+    </div>
+
+    <script src="./JS/script.js"></script>
+  </body>
+</html>
